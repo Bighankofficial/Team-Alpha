@@ -17,26 +17,6 @@ let db = new sqlite3.Database('./christmas_list.db', sqlite3.OPEN_READWRITE, (er
 	}
 });
 
-let getAItem = (aID, res) => {
-  var getAGroceryItem = 'SELECT itemID, item_name, item_count FROM grocery_item WHERE itemID = ?';
-  var params = [aID];
-  
-  db.up
-
-  db.get(getAGroceryItem, params, function(err, row){
-      if (err) {
-       
-          throw err;
-        }
-       // rows.forEach((row) => {
-         // console.log(row.item_name);
-       // });
-        console.log(row);
-       res.render('update', {row})
-
-  })
-}
-
 
 /**To serve static files such as images, CSS files, and JavaScript files, create a folders
 * and include the below statement.  The below statement assumes that I have a folder named assets
@@ -156,16 +136,18 @@ app.post('/create_list_item', function (req, res) {
     var UpdatedChristmasList = 'UPDATE list SET item_name = ?, item_priority = ? WHERE itemID = ?';
     var params = [item_name, item_priority]
 
-    db.run(UpdatedChristmasList, params, function(err, row){
-      if(err){ 
-        return console.log(err.message);
-      }
-      
-      console.log("Christmas List Item Updated");
-      console.log(`# Rows updated ${this.changes}`);
-      
+    db.run(UpdatedChristmasList, params, function(err, rows){
+      if (err) {
+       
+          throw err;
+        }
+        /*rows.forEach((row) => {
+          console.log(row.item_name);
+        });*/
+        console.log("Christmas List Item Updated");
+        console.log(`# Rows updated ${this.row}`);
 
-    })
+  })
 
     getAllItems(res);
 
