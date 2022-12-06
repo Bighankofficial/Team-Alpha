@@ -17,11 +17,6 @@ let db = new sqlite3.Database('./christmas_list.db', sqlite3.OPEN_READWRITE, (er
 	}
 });
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 587222db6b7b777e196db24c0b5f99ed8530341f
 
 /**To serve static files such as images, CSS files, and JavaScript files, create a folders
 * and include the below statement.  The below statement assumes that I have a folder named assets
@@ -114,13 +109,11 @@ app.post('/create_list_item', function (req, res) {
  })
 
   // Route that allows me to delete a grocery list item
-  
-  
   app.post('/update_item', function (req, res) {
     
 	//Getting body parameters
 	const { updaterecordID} = req.body;
-    
+
     var getChristmasItem = 'SELECT itemID, item_name, item_priority FROM list WHERE itemID = ?';
     var params = [updaterecordID];
     db.get(getChristmasItem, params, function(err, row){
@@ -140,7 +133,7 @@ app.post('/create_list_item', function (req, res) {
     // body parameters
     const {itemID, item_name, item_priority} =req.body
 
-    var UpdatedChristmasList = 'UPDATE list SET item_name = ?, item_priority = ?, WHERE itemID = ?';
+    var UpdatedChristmasList = 'UPDATE list SET item_name = ?, item_priority = ? WHERE itemID = ?';
     var params = [item_name, item_priority, itemID]
 
     db.run(UpdatedChristmasList, params, function(err, rows){
