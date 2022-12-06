@@ -138,10 +138,10 @@ app.post('/create_list_item', function (req, res) {
 
    app.post('/confirm_update', function(req, res) {
     // body parameters
-    const {item_name, item_priority} =req.body
+    const {itemID, item_name, item_priority} =req.body
 
     var UpdatedChristmasList = 'UPDATE list SET item_name = ?, item_priority = ?, WHERE itemID = ?';
-    var params = [item_name, item_priority]
+    var params = [item_name, item_priority, itemID]
 
     db.run(UpdatedChristmasList, params, function(err, rows){
       if (err) {

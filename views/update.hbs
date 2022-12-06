@@ -35,7 +35,7 @@
             <h2>Update Christmas Item:</h2>
             <form action="/confirm_update" method="POST">
                 <input type="text"  name="item_name" class="form-control" value="{{row.item_name}}"  placeholder="Enter Christmas item (ex. Motorcycle)" size="40"><br>
-                <input type="number"  name="item_count" class="form-control" value="{{row.item_priority}}" placeholder="Enter priority 1 - 5" size="60"><br>
+                <input type="number"  name="item_priority" class="form-control" value="{{row.item_priority}}" placeholder="Enter priority 1 - 5" size="60"><br>
                 <input type="hidden"  name="itemID" value="{{row.itemID}}">
                 <button name="confirmupdate" id="confirmnow" type="confirm" class="btn btn-primary" value="{{row.itemID}}">CONFIRM</button>
             </form>
